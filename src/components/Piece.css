@@ -1,0 +1,40 @@
+.board-piece {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.board-piece:hover {
+  background: red;
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.piece-container {
+  background: blue;
+  height: 0;
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  /* border: 1px solid black; */
+}
+
+.no-piece {
+  background: black;
+}
+
+.player1 {
+  background: rgb(250, 40, 40);
+  transition: background 0.3s;
+}
+
+.player2 {
+  background: rgb(245, 240, 20);
+  transition: background 0.3s;
+}
+
+
+

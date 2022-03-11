@@ -1,0 +1,5 @@
+.board-row {
+  grid-row-start: 1;
+  /* grid-column-end: 5; */
+  /* grid-column-end: 7; */
+}
