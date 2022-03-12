@@ -1,4 +1,6 @@
-export const winningMove = (board: string[][], piece: string): boolean => {
+type Board = string[][];
+
+export const winningMove = (board: Board, piece: string): boolean => {
   const numRows = board.length; // height
   const numCols = board[0].length; // width
   const midPoint = Math.floor(numCols / 2);

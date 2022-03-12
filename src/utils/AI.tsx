@@ -1,7 +1,9 @@
 import { winningMove } from './gameUtils';
 
+type Board = string[][];
+
 export const AIMove = (
-  difficulty: number, board: string[][]
+  difficulty: number, board: Board
 ): number => {
 
   const AIColumn: number = decisionGraph(
@@ -13,7 +15,7 @@ export const AIMove = (
 
 // might be unnecessary 
 const simulateDropPiece = (
-  board: string[][], row: number, col: number, piece: string
+  board: Board, row: number, col: number, piece: string
 ): void => {
   board[row][col] = piece;
 }
@@ -33,7 +35,7 @@ const ratingDistribution = (row: number, col: number): number => {
   return distrubution[row][col];
 }
 
-const rateCurrentPosition = (board: string[][]): number => {
+const rateCurrentPosition = (board: Board): number => {
   const numRows = board.length;
   const numCols = board[0].length;
   const playerPiece = '1';
@@ -53,7 +55,7 @@ const rateCurrentPosition = (board: string[][]): number => {
   return rating + weight;
 }
 
-const getOpenPositions = (board: string[][]): number[] => {
+const getOpenPositions = (board: Board): number[] => {
   const topRow = board[0];
   const openCols = topRow.map((num, index) => num === '0' ? index : -1)
                             .filter(num => num > -1);
@@ -61,7 +63,7 @@ const getOpenPositions = (board: string[][]): number[] => {
   return openCols; 
 }
 
-const getOpenRowIndex = (board: string[][], col: number): number => {
+const getOpenRowIndex = (board: Board, col: number): number => {
   const numRows: number = board.length;
   for (let row = numRows - 1; row >= 0; row--){
     if (board[row][col] === '0')
@@ -71,15 +73,15 @@ const getOpenRowIndex = (board: string[][], col: number): number => {
   return -1;
 }
 
-const endOfGraph = (board: string[][]): boolean => {
+const endOfGraph = (board: Board): boolean => {
   const playerPiece: string = '1';
   const AIPiece: string = '2';
   return winningMove(board, playerPiece) || winningMove(board, AIPiece) || (!getOpenPositions(board))
 }
 
 const copyAndDropPiece = (
-  board: string[][], column: number, piece: string
-): string[][] => {
+  board: Board, column: number, piece: string
+): Board => {
   const copyBoard = board.map(row => [...row]);
   const row = getOpenRowIndex(copyBoard, column);
   simulateDropPiece(copyBoard, row, column, piece);
@@ -87,7 +89,7 @@ const copyAndDropPiece = (
 }
 
 const decisionGraph = (
-  board: string[][],
+  board: Board,
   depth: number,
   alpha: number,
   beta: number,
@@ -116,7 +118,7 @@ const decisionGraph = (
     let bestColumn: number = openColumns[0];
 
     for (const col of openColumns) {
-      const copyBoard: string[][] = copyAndDropPiece(board, col, AIPiece);
+      const copyBoard: Board = copyAndDropPiece(board, col, AIPiece);
       const newScore: number = decisionGraph(copyBoard, depth - 1, alpha, beta, false)[1];
 
       if (newScore > value) {
@@ -137,7 +139,7 @@ const decisionGraph = (
     let bestColumn = openColumns[0];
 
     for (const col of openColumns) {
-      const copyBoard: string[][] = copyAndDropPiece(board, col, playerPiece);
+      const copyBoard: Board = copyAndDropPiece(board, col, playerPiece);
       const newScore: number = decisionGraph(copyBoard, depth - 1, alpha, beta, true)[1];
     
       if (newScore < value) {

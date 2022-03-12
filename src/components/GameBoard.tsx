@@ -6,6 +6,8 @@ import { AIMove } from '../utils/AI';
 import './GameBoard.css';
 import Row from './Row';
 
+type Board = string[][];
+
 const GameBoard = () => {
   const numCols: number = 7;
   const numRows: number = 6;
@@ -46,7 +48,7 @@ const GameBoard = () => {
     const selectedCol: number = getSelectedColumn(event.pageX);
 
     if (hasOpenCols(selectedCol) && !gameOver) {
-      const newBoard: string[][] = mainBoard.map(row => [...row]);
+      const newBoard: Board = mainBoard.map(row => [...row]);
       const newOpenCols: number[] = [...openCols];
       const selectedRow: number = newOpenCols[selectedCol];
 
@@ -83,7 +85,7 @@ const GameBoard = () => {
   useEffect(() => {
     const calculateAIMove = (): void => {
      
-    const AIBoard: string[][] = mainBoard.map(row => [...row]);
+    const AIBoard: Board = mainBoard.map(row => [...row]);
     const AIColumn = AIMove(difficulty, AIBoard);
     const AIOpenCols: number[] = [...openCols];
     const AIRow: number = AIOpenCols[AIColumn];
