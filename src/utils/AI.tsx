@@ -36,11 +36,11 @@ const ratingDistribution = (row: number, col: number): number => {
 }
 
 const rateCurrentPosition = (board: Board): number => {
-  const numRows = board.length;
-  const numCols = board[0].length;
-  const playerPiece = '1';
-  const AIPiece = '2';
-  const weight = 138;
+  const numRows: number = board.length;
+  const numCols: number = board[0].length;
+  const playerPiece: string = '1';
+  const AIPiece: string = '2';
+  const weight: number = 138;
   let rating: number = 0;
 
   for (let row = 0; row < numRows; row++) {
@@ -56,7 +56,7 @@ const rateCurrentPosition = (board: Board): number => {
 }
 
 const getOpenPositions = (board: Board): number[] => {
-  const topRow = board[0];
+  const topRow: string[] = board[0];
   const openCols = topRow.map((num, index) => num === '0' ? index : -1)
                             .filter(num => num > -1);
 
@@ -127,7 +127,7 @@ const decisionGraph = (
       }
 
       alpha = Math.max(value, alpha);
-      if (alpha >= beta) {
+      if (value >= beta) {
         break;
       }
     }
@@ -148,7 +148,7 @@ const decisionGraph = (
       }
 
       beta = Math.min(beta, value);
-      if (alpha >= beta) {
+      if (alpha >= value) {
         break;
       }
 

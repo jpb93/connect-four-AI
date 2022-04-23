@@ -1,9 +1,9 @@
 type Board = string[][];
 
 export const winningMove = (board: Board, piece: string): boolean => {
-  const numRows = board.length; // height
-  const numCols = board[0].length; // width
-  const midPoint = Math.floor(numCols / 2);
+  const numRows: number = board.length; // height
+  const numCols: number = board[0].length; // width
+  const midPoint: number = Math.floor(numCols / 2);
 
   for (let row = 0; row < numRows; row++) {
     for (let col = 0; col < numCols; col++) {
