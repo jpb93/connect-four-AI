@@ -11,6 +11,7 @@ type Board = string[][];
 const GameBoard = () => {
   const numCols: number = 7;
   const numRows: number = 6;
+  const maxDepth: number = 7;
   const playerPiece: string = '1';
   const AIPiece: string = '2';
   const emptyPiece: string = '0';
@@ -25,7 +26,7 @@ const GameBoard = () => {
   const [ openCols, setOpenCols ] = useState(Array(numCols).fill(numRows - 1));
   const [ gameOver, setGameOver ] = useState(false);
   const [ winnerText, setWinnerText ] = useState('');
-  const [ difficulty, setDifficulty ] = useState(7);
+  const [ difficulty, setDifficulty ] = useState(maxDepth);
   const [ isPlayerTurn, setIsPlayerTurn ] = useState(true);
 
   // hacky way to map clicks to a column index until I figure out typescript react events
