@@ -7,7 +7,7 @@ type PieceProps = {
 
 const Piece = ({ piece }: PieceProps) => {
 
-  const currentPiece = piece === '0'
+  const currentPiece: string = piece === '0'
     ? 'no-piece'
     : piece === '1'
       ? 'player1'

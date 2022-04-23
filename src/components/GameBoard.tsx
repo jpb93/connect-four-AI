@@ -69,9 +69,9 @@ const GameBoard = () => {
   }
 
   const resetBoard = (): void => {
-    const blankBoard = Array.from(Array(numRows), () => Array(numCols).fill(emptyPiece));
-    const blankOpenCols = Array(numCols).fill(numRows - 1);
-    const blankMessage = '';
+    const blankBoard: Board = Array.from(Array(numRows), () => Array(numCols).fill(emptyPiece));
+    const blankOpenCols: number[] = Array(numCols).fill(numRows - 1);
+    const blankMessage: string = '';
 
     setMainBoard(blankBoard);
     setOpenCols(blankOpenCols);
@@ -87,7 +87,7 @@ const GameBoard = () => {
     const calculateAIMove = (): void => {
      
     const AIBoard: Board = mainBoard.map(row => [...row]);
-    const AIColumn = AIMove(difficulty, AIBoard);
+    const AIColumn: number = AIMove(difficulty, AIBoard);
     const AIOpenCols: number[] = [...openCols];
     const AIRow: number = AIOpenCols[AIColumn];
 
