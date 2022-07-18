@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/connect-four-AI/static/css/main.c7e1c1d2.css",
-    "main.js": "/connect-four-AI/static/js/main.9a5e2c41.js",
+    "main.js": "/connect-four-AI/static/js/main.3f39eaca.js",
     "static/media/empty-room3.jpg": "/connect-four-AI/static/media/empty-room3.ce901222719f128e31a3.jpg",
     "index.html": "/connect-four-AI/index.html",
     "main.c7e1c1d2.css.map": "/connect-four-AI/static/css/main.c7e1c1d2.css.map",
-    "main.9a5e2c41.js.map": "/connect-four-AI/static/js/main.9a5e2c41.js.map"
+    "main.3f39eaca.js.map": "/connect-four-AI/static/js/main.3f39eaca.js.map"
   },
   "entrypoints": [
     "static/css/main.c7e1c1d2.css",
-    "static/js/main.9a5e2c41.js"
+    "static/js/main.3f39eaca.js"
   ]
 }
